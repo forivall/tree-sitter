@@ -120,7 +120,7 @@ if [[ "$minify_js" == "1" ]]; then
   if [ ! -d ${web_dir}/node_modules/terser ]; then
     (
       cd ${web_dir}
-      npm install
+      npm install --prefer-offline
     )
   fi
   ${web_dir}/node_modules/.bin/terser   \

@@ -4,8 +4,13 @@ title: Playground
 permalink: playground
 ---
 
+{% if jekyll.environment == "development" %}
+<link rel="stylesheet" href="/vendor/node_modules/codemirror/lib/codemirror.css">
+<link rel="stylesheet" href="/vendor/node_modules/clusterize.js/clusterize.css">
+{% else %}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.45.0/codemirror.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/clusterize.js/0.18.0/clusterize.min.css">
+{% endif %}
 
 <h1>Syntax Tree Playground</h1>
 
@@ -20,13 +25,13 @@ permalink: playground
   <option value="go">Go</option>
   <option value="html">HTML</option>
   <option value="java">Java</option>
-  <option value="javascript" selected="selected">JavaScript</option>
+  <option value="javascript">JavaScript</option>
   <option value="php">PHP</option>
   <option value="python">Python</option>
   <option value="ruby">Ruby</option>
   <option value="rust">Rust</option>
   <option value="toml">TOML</option>
-  <option value="typescript">TypeScript</option>
+  <option value="typescript" selected="selected">TypeScript</option>
   <option value="yaml">YAML</option>
   <option value="ql">QL</option>
 </select>
@@ -53,15 +58,17 @@ permalink: playground
 
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.45.0/codemirror.min.js"></script>
 
 {% if jekyll.environment == "development" %}
+<script src="/vendor/node_modules/codemirror/lib/codemirror.js"></script>
 <script>LANGUAGE_BASE_URL = "/assets/js";</script>
 <script src="/assets/js/tree-sitter.js"></script>
+<script src="/vendor/node_modules/clusterize.js/clusterize.js"></script>
 {% else %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.45.0/codemirror.min.js"></script>
 <script>LANGUAGE_BASE_URL = "https://tree-sitter.github.io";</script>
 <script src="https://tree-sitter.github.io/tree-sitter.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clusterize.js/0.18.0/clusterize.min.js"></script>
 {% endif %}
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clusterize.js/0.18.0/clusterize.min.js"></script>
 <script src="{{ '/assets/js/playground.js' | relative_url }}"></script>
