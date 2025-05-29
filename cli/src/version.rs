@@ -174,6 +174,7 @@ impl Version {
             let Ok(cmd) = Command::new("npm")
                 .arg("install")
                 .arg("--package-lock-only")
+                .arg("--prefer-offline")
                 .current_dir(&self.current_dir)
                 .output()
             else {
